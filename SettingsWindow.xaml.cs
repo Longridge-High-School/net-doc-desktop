@@ -39,7 +39,7 @@ public partial class SettingsWindow : Window
         Config.configFilePath = FilePath.Text;
         Config.Save ();
 
-        Process.Start (".\\net-doc-desktop.exe");
+        Process.Start (System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location) + "\\net-doc-desktop.exe");
         System.Windows.Application.Current.Shutdown ();
     }
 

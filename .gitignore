@@ -1,4 +1,6 @@
 obj/
 bin/
 .vscode/
+Output/
 config.xml
+net-doc-desktop.iss

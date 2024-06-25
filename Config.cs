@@ -2,18 +2,19 @@ using System.Xml.Serialization;
 using System.IO;
 using net_doc_desktop;
 using System.CodeDom;
+using System.Windows;
 
 public static class Config
 {
     public static string url = "https://longridge-high-school.github.io/net-doc/";
-    public static string configFilePath = ".\\config.xml";
+    public static string configFilePath = Globals.defaultConfigPath + "\\config.xml";
 
     public static void Save ()
     {
         ConfigFile file = new ConfigFile ();
 
         file.url = Config.url;
-        file.configFilePath = Config.configFilePath;
+        file.configFilePath = Environment.ExpandEnvironmentVariables (Config.configFilePath);
 
         var serialiser = new XmlSerializer (typeof (ConfigFile));
 
@@ -38,9 +39,9 @@ public static class Config
             Config.url = file.url;
             Config.configFilePath = file.configFilePath;
         }
-        catch
+        catch (Exception e)
         {
-            Console.WriteLine ("Could not find config file.");
+            Console.WriteLine (e.ToString ());
         }
     }
 }

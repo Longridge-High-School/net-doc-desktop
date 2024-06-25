@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
+using System.IO;
 
 namespace net_doc_desktop;
 
@@ -19,6 +20,7 @@ public partial class MainWindow : Window
 {
     public MainWindow ()
     {
+        Directory.CreateDirectory (Globals.defaultConfigPath); // Default config directory should always exist.
         Config.Load ();
         
         if (!Globals.hasCreatedTray)

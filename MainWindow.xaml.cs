@@ -20,6 +20,14 @@ public partial class MainWindow : Window
 {
     public MainWindow ()
     {
+        bool alreadyRunning = System.Diagnostics.Process.GetProcessesByName (System.IO.Path.GetFileNameWithoutExtension (System.Reflection.Assembly.GetEntryAssembly ().Location)).Count () > 1;
+
+        if (alreadyRunning)
+        {
+            MessageBox.Show ("Only one Net Doc Desktop instance can run at a time.");
+            System.Windows.Application.Current.Shutdown ();
+        }
+        
         Directory.CreateDirectory (Globals.defaultConfigPath); // Default config directory should always exist.
         Config.Load ();
         

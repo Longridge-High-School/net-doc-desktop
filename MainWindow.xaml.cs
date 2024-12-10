@@ -20,9 +20,7 @@ public partial class MainWindow : Window
 {
     public MainWindow ()
     {
-        bool alreadyRunning = System.Diagnostics.Process.GetProcessesByName (System.IO.Path.GetFileNameWithoutExtension (System.Reflection.Assembly.GetEntryAssembly ().Location)).Count () > 1;
-
-        if (alreadyRunning)
+        if (IsProcessRunningSameSession ())
         {
             MessageBox.Show ("Only one Net Doc Desktop instance can run at a time.");
             System.Windows.Application.Current.Shutdown ();
@@ -49,5 +47,11 @@ public partial class MainWindow : Window
         e.Cancel = true;
         
         this.Hide ();
+    }
+
+    public bool IsProcessRunningSameSession ()
+    {
+        var currentSessionID = System.Diagnostics.Process.GetCurrentProcess ().SessionId;
+        return System.Diagnostics.Process.GetProcessesByName (System.IO.Path.GetFileNameWithoutExtension (System.Reflection.Assembly.GetEntryAssembly ().Location)).Where (p => p.SessionId == currentSessionID).Count () > 1;
     }
 }

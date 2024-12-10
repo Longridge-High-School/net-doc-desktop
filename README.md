@@ -1,4 +1,4 @@
-# net-doc-desktop
+# Net Doc Desktop
 **Access Net Doc from your desktop!**
 
 ## Getting Started

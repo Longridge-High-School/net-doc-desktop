@@ -14,6 +14,8 @@
         <TextBox Name="UrlBox" Margin = "10 0 10 10"/>
         <Label Content="Config File Path:" Margin = "10 0 10 0"/>
         <TextBox Name="FilePath" Margin = "10 0 10 10"/>
+        <Label Content="Export CSS URL:" Margin = "10 0 10 0"/>
+        <TextBox Name="CSSBox" Margin = "10 0 10 10"/>
         <Button Click="Apply" Margin = "10 20 10 5">Apply Changes and Restart</Button>
         <Button Click="Cancel" Margin = "10 5 10 0">Cancel</Button>
     </StackPanel>

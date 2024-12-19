@@ -24,6 +24,7 @@ public partial class SettingsWindow : Window
 
         UrlBox.Text = Config.url;
         FilePath.Text = Config.configFilePath;
+        CSSBox.Text = Config.css;
     }
 
     protected override void OnClosing (CancelEventArgs e)
@@ -37,6 +38,7 @@ public partial class SettingsWindow : Window
     {
         Config.url = UrlBox.Text;
         Config.configFilePath = FilePath.Text;
+        Config.css = CSSBox.Text;
         Config.Save ();
 
         Process.Start (System.IO.Path.GetDirectoryName (System.Reflection.Assembly.GetEntryAssembly ().Location) + "\\net-doc-desktop.exe");
